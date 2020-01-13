@@ -1,3 +1,9 @@
+# 1.7.5    
+Fixed a bug where /SH argument would allways = False regardles of what was set in project file
+Fixed automatic updater
+
+Download: https://github.com/KuromeSan/GayMaker/releases/download/V1.7.5/GayMaker.1.7.5.zip
+
 # 1.7.3    
 Fixed a bug where if you never opened "Global Game Settings" in GameMaker   
 Then GayMaker would crash (IT WAS A STRANGE PARSER DIFFERNTAL xD)   
