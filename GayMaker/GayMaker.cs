@@ -22,7 +22,7 @@ namespace GayMaker
 {
     public partial class GayMaker : Form
     {
-        public String CurrentVersion = "1.7.4";
+        public String CurrentVersion = "1.7.5";
         private string stderr = "";
 
         private bool HasShaders = false;
@@ -143,7 +143,7 @@ namespace GayMaker
             WebClient wc = new WebClient();
 
             wc.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
-            String UpdateString = wc.DownloadString("https://bitbucket.org/SilicaAndPina/gaymaker/raw/master/latest.md");
+            String UpdateString = wc.DownloadString("https://raw.githubusercontent.com/KuromeSan/GayMaker/master/latest.md");
             String[] Data = UpdateString.Split('~');
             if (Data[0] != CurrentVersion)
             {
@@ -208,17 +208,17 @@ namespace GayMaker
             XmlDocument DefaultConfig = new XmlDocument();
             DefaultConfig.Load(Path.GetDirectoryName(ProjectPath.Text) + "\\Configs\\Default.config.gmx");
             XmlNode TP = DefaultConfig.GetElementsByTagName("option_psvita_texture_page")[0]; // Issue #5 Fixed!
-
+            XmlNode SH = DefaultConfig.GetElementsByTagName("option_shortcircuit")[0]; 
             String versionBit = GMVer.Split('.')[2];
 
             string args;
             if(HasShaders && !YYC)
             {
-                args = "/c /m=psvita /config=\"Default\" /tgt=2147483648 /obob=True /obpp=False /obru=True /obes=False /i=3 /cvm /tp="+TP.InnerText+" /mv=1 /iv=0 /rv=0 /bv="+ versionBit +" /sh=False /psvitasdk=\""+Directory.GetCurrentDirectory()+"\\psvitasdk\" /gn=\"" + AppName.Text + "\" /o=\"" + Dst + "\" \"" + Src + "\"";
+                args = "/c /m=psvita /config=\"Default\" /tgt=2147483648 /obob=True /obpp=False /obru=True /obes=False /i=3 /cvm /tp="+TP.InnerText+" /mv=1 /iv=0 /rv=0 /bv="+ versionBit +" /sh=" + SH.InnerText +" / psvitasdk=\""+Directory.GetCurrentDirectory()+"\\psvitasdk\" /gn=\"" + AppName.Text + "\" /o=\"" + Dst + "\" \"" + Src + "\"";
             }
             else 
             {
-                args = "/c /m=psvita /config=\"Default\" /tgt=2147483648 /obob=True /obpp=False /obru=True /obes=False /i=3 /cvm /tp="+TP.InnerText+ " /mv=1 /iv=0 /rv=0 /bv=" + versionBit +" /sh=False /gn=\"" + AppName.Text + "\" /o=\"" + Dst + "\" \"" + Src + "\"";
+                args = "/c /m=psvita /config=\"Default\" /tgt=2147483648 /obob=True /obpp=False /obru=True /obes=False /i=3 /cvm /tp="+TP.InnerText+ " /mv=1 /iv=0 /rv=0 /bv=" + versionBit +" /sh=" + SH.InnerText +" / gn=\"" + AppName.Text + "\" /o=\"" + Dst + "\" \"" + Src + "\"";
             }
             if(YYC)
             {
