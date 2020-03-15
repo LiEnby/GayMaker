@@ -27,7 +27,7 @@ namespace GayMaker
         {
             WebClient wc = new WebClient();
             wc.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
-            String UpdateString = wc.DownloadString("https://bitbucket.org/SilicaAndPina/gaymaker/raw/master/latest.md");
+            String UpdateString = wc.DownloadString("https://raw.githubusercontent.com/KuromeSan/GayMaker/master/latest.md");
             String[] Data = UpdateString.Split('~');
             String UpdateUrl = Data[1];
             wc.Dispose();
