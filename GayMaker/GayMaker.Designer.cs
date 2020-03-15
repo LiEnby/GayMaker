@@ -102,7 +102,7 @@
             // 
             // ProjectPath
             // 
-            this.ProjectPath.Location = new System.Drawing.Point(6, 29);
+            this.ProjectPath.Location = new System.Drawing.Point(6, 32);
             this.ProjectPath.Name = "ProjectPath";
             this.ProjectPath.ReadOnly = true;
             this.ProjectPath.Size = new System.Drawing.Size(282, 20);
@@ -130,10 +130,10 @@
             // 
             // IconPath
             // 
-            this.IconPath.Location = new System.Drawing.Point(3, 71);
+            this.IconPath.Location = new System.Drawing.Point(7, 71);
             this.IconPath.Name = "IconPath";
             this.IconPath.ReadOnly = true;
-            this.IconPath.Size = new System.Drawing.Size(282, 20);
+            this.IconPath.Size = new System.Drawing.Size(278, 20);
             this.IconPath.TabIndex = 6;
             this.IconPath.Text = "img\\icon0.png";
             // 
@@ -376,10 +376,10 @@
             // 
             // GatePath
             // 
-            this.GatePath.Location = new System.Drawing.Point(6, 149);
+            this.GatePath.Location = new System.Drawing.Point(7, 149);
             this.GatePath.Name = "GatePath";
             this.GatePath.ReadOnly = true;
-            this.GatePath.Size = new System.Drawing.Size(279, 20);
+            this.GatePath.Size = new System.Drawing.Size(278, 20);
             this.GatePath.TabIndex = 15;
             this.GatePath.Text = "img\\startup.png";
             // 
@@ -404,10 +404,10 @@
             // 
             // BgPath
             // 
-            this.BgPath.Location = new System.Drawing.Point(6, 110);
+            this.BgPath.Location = new System.Drawing.Point(7, 110);
             this.BgPath.Name = "BgPath";
             this.BgPath.ReadOnly = true;
-            this.BgPath.Size = new System.Drawing.Size(279, 20);
+            this.BgPath.Size = new System.Drawing.Size(278, 20);
             this.BgPath.TabIndex = 12;
             this.BgPath.Text = "img\\bg0.png";
             // 
@@ -626,7 +626,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1344, 691);
+            this.ClientSize = new System.Drawing.Size(1344, 690);
             this.Controls.Add(this.EE1);
             this.Controls.Add(this.Compiler);
             this.Controls.Add(this.panel1);

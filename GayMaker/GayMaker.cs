@@ -22,7 +22,7 @@ namespace GayMaker
 {
     public partial class GayMaker : Form
     {
-        public String CurrentVersion = "1.7.5";
+        public String CurrentVersion = "1.7.6";
         private string stderr = "";
 
         private bool HasShaders = false;
@@ -161,7 +161,7 @@ namespace GayMaker
 
         private void CopyDir(string source, string target)
         {
-            GmacOut.AppendText("Copying Directory:\n  \"" + source + "\"\n-> \"" + target + "\"\n");
+            GmacOut.AppendText("Copying Directory: \"" + source + "\" -> \"" + target + "\"\r\n");
 
             if (!Directory.Exists(target)) Directory.CreateDirectory(target);
             string[] sysEntries = Directory.GetFileSystemEntries(source);
@@ -174,7 +174,7 @@ namespace GayMaker
                     CopyDir(sysEntry, targetPath);
                 else
                 {
-                    GmacOut.AppendText("Copying \"" + fileName + "\"\n");
+                    GmacOut.AppendText("Copying \"" + fileName + "\" -> \""+targetPath+"\"\r\n");
                     File.Copy(sysEntry, targetPath, true);
                 }
             }
@@ -189,11 +189,11 @@ namespace GayMaker
                 Bitmap clone = orig.Clone(new Rectangle(0, 0, orig.Width, orig.Height), PixelFormat.Format8bppIndexed);
                 clone.Save(@Dst);
                 clone.Dispose();
-                GmacOut.AppendText(" Done!\n");
+                GmacOut.AppendText(" Done!\r\n");
             }
             else
             {
-                GmacOut.AppendText(" No need!\n");
+                GmacOut.AppendText(" No need!\r\n");
                 File.Copy(Src, Dst);
             }
             orig.Dispose();
@@ -243,8 +243,8 @@ namespace GayMaker
                 args = "/c /m=llvm-psvita /llvmSource=\"" + YYCDIR + "\"  /config=\"Default\" /tgt=2147483648 /obob=True /obpp=False /obru=True /obes=False /i=3 /j=4 /tp=" + TP.InnerText + " /psvitasdk=\"" + ReadSetting("SDKPath") + "\" /mv=1 /iv=0 /rv=0 /bv=" + versionBit + " /gn=\"" + AppName.Text + "\" /cd=\"" + Path.GetDirectoryName(Dst) + "/YYCCache\" /o=\"" + Dst + "\" \"" + Src + "\" ";
             }
 
-            GmacOut.AppendText("-- GMASSETCOMPILER BEGIN --\n");
-            GmacOut.AppendText("GMAssetCompiler.exe "+args+"\n");
+            GmacOut.AppendText("-- GMASSETCOMPILER BEGIN --\r\n");
+            GmacOut.AppendText("GMAssetCompiler.exe "+args+"\r\n");
             Process gmac = new Process();
             if (GMVer == "1.4.9999")
             {
@@ -281,7 +281,7 @@ namespace GayMaker
                 return false;
             }
             gmac.Dispose();
-            GmacOut.AppendText("-- GMASSETCOMPILER FINISHED! --\n");
+            GmacOut.AppendText("-- GMASSETCOMPILER FINISHED! --\r\n");
             GmacOut.AppendText("Renaming to game.win...");
             foreach(String file in Directory.GetFiles(Dst))
             {
@@ -295,7 +295,7 @@ namespace GayMaker
                     File.Delete(file);
                 }
             }
-            GmacOut.AppendText("OK!\n");
+            GmacOut.AppendText("OK!\r\n");
             return true;
         }
 
@@ -307,8 +307,8 @@ namespace GayMaker
             {
                 if(e.Data != null)
                     if (e.Data.ToString().ToLower().Contains("error"))
-                        stderr += e.Data + "\n";
-                GmacOut.AppendText(e.Data+"\n");
+                        stderr += e.Data + "\r\n";
+                GmacOut.AppendText(e.Data+"\r\n");
                 
             }));
         }
@@ -317,8 +317,8 @@ namespace GayMaker
         {
             this.BeginInvoke(new MethodInvoker(() =>
             {
-                stderr += e.Data + "\n";
-                GmacOut.AppendText(e.Data + "\n");
+                stderr += e.Data + "\r\n";
+                GmacOut.AppendText(e.Data + "\r\n");
             }));
         }
 
@@ -606,7 +606,11 @@ namespace GayMaker
         private void TitleIdBox_TextChanged(object sender, EventArgs e)
         {
             int i = TitleIdBox.SelectionStart;
+
             TitleIdBox.Text = TitleIdBox.Text.ToUpper();
+            Regex rgx = new Regex("[^A-Z0-9]");
+            TitleIdBox.Text = rgx.Replace(TitleIdBox.Text, "");
+
             TitleIdBox.SelectionStart = i;
             if(TitleIdBox.TextLength != TitleIdBox.MaxLength)
             {
@@ -692,7 +696,7 @@ namespace GayMaker
                     tempdir = Path.GetDirectoryName(saveFileDialog1.FileName) + "\\_temp";
                     if (Directory.Exists(tempdir))
                     {
-                        GmacOut.AppendText("Deleting _temp\n");
+                        GmacOut.AppendText("Deleting _temp\r\n");
                         Directory.Delete(tempdir, true);
                     }
                     Directory.CreateDirectory(tempdir);
@@ -757,13 +761,13 @@ namespace GayMaker
                     }
                     cmd.Dispose();
 
-                    GmacOut.AppendText("Locating SELF\n");
+                    GmacOut.AppendText("Locating SELF\r\n");
 
                     foreach(string fn in Directory.GetFiles(tempdir + "\\YYCCache\\" + ProjectName + "\\Default\\Scripts\\PSVitaSolution\\PSVita_Release"))
                     {
                         if (Path.GetExtension(fn) == ".self")
                         {
-                            GmacOut.AppendText("Moving " + fn + " to " + tempdir + "\\eboot.bin\n");
+                            GmacOut.AppendText("Moving " + fn + " to " + tempdir + "\\eboot.bin\r\n");
                             File.Delete(tempdir + "\\eboot.bin");
                             File.Move(fn, tempdir + "\\eboot.bin");
                             break;
@@ -799,7 +803,7 @@ namespace GayMaker
 
                                 if (!Directory.Exists(@"psvitasdk"))
                                 {
-                                    GmacOut.AppendText("Creating PSP2SDK Directory Structure");
+                                    GmacOut.AppendText("Creating PSP2SDK Directory Structure\r\n");
                                     Directory.CreateDirectory("psvitasdk");
                                     Directory.CreateDirectory("psvitasdk/host_tools");
                                     Directory.CreateDirectory("psvitasdk/host_tools/bin");
@@ -859,7 +863,7 @@ namespace GayMaker
             }
                 FileStream fd = File.Open(tempdir + "\\sce_sys\\param.sfo", FileMode.OpenOrCreate, FileAccess.ReadWrite);
 
-                GmacOut.AppendText("Writing " + AppName.Text + " to TITLE of param.sfo\n");
+                GmacOut.AppendText("Writing " + AppName.Text + " to TITLE of param.sfo\r\n");
                 fd.Seek(0x2C8, SeekOrigin.Begin);
                 foreach (Byte by in ASCIIEncoding.ASCII.GetBytes(AppName.Text))
                 {
@@ -880,7 +884,7 @@ namespace GayMaker
                     fd.WriteByte(0x62);  //ASCII 'b'
                 }
 
-                GmacOut.AppendText("Writing " + TitleIdBox.Text + " to TITLE_ID of param.sfo\n");
+                GmacOut.AppendText("Writing " + TitleIdBox.Text + " to TITLE_ID of param.sfo\r\n");
                 fd.Seek(0x37C, SeekOrigin.Begin);
                 foreach (Byte by in ASCIIEncoding.ASCII.GetBytes(TitleIdBox.Text))
                 {
@@ -894,7 +898,7 @@ namespace GayMaker
 
                 if (LeftGate.Checked)
                 {
-                    GmacOut.AppendText("Writing #LeftGate template.xml\n");
+                    GmacOut.AppendText("Writing #LeftGate template.xml\r\n");
                     File.WriteAllText(tempdir + "\\sce_sys\\livearea\\contents\\template.xml", Properties.Resources.gdbTemplate);
                 }
 
@@ -906,13 +910,13 @@ namespace GayMaker
                 
                 
                 ZipFile.CreateFromDirectory(tempdir, saveFileDialog1.FileName);
-                GmacOut.AppendText("OK\n");
+                GmacOut.AppendText("OK\r\n");
 
                 GmacOut.AppendText("Deleting " + tempdir + " ...");
                 Directory.Delete(tempdir, true);
-                GmacOut.AppendText("OK!\n");
+                GmacOut.AppendText("OK!\r\n");
 
-                GmacOut.AppendText("Done!\n");
+                GmacOut.AppendText("Done!\r\n");
                 CreateVPK.Enabled = true;
                 MessageBox.Show("VPK Created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -952,7 +956,7 @@ namespace GayMaker
                     DialogResult MSG = MessageBox.Show("Do you want to install PSVita Specific functions into\nGameMaker:Studio?", "Install vita functions?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (MSG == DialogResult.Yes)
                     {
-                        GmacOut.AppendText("Adding vita functions to (global) fnames file...\n");
+                        GmacOut.AppendText("Adding vita functions to (global) fnames file...\r\n");
                         File.AppendAllText(appdata + "\\GameMaker-Studio\\fnames", Resources.fnames);
                         MessageBox.Show("PSVita Specific functions have been added to:\n%appdata%\\GameMaker-Studio\\fnames", "Installed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
