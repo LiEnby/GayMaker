@@ -1,3 +1,10 @@
+#1.7.6
+Fixed an issue where it was possible to enter invalid characters into Title ID Feild
+Fixed some UI Elements
+Changed \n to \r\n to make gmac output show properly on win10.
+
+Download: https://github.com/KuromeSan/GayMaker/releases/download/v1.7.6/GayMaker.1.7.6.zip
+
 # 1.7.5    
 Fixed a bug where /SH argument would allways = False regardles of what was set in project file
 Fixed automatic updater
