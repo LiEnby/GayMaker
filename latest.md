@@ -1,1 +1,1 @@
-1.7.5~https://github.com/KuromeSan/GayMaker/releases/download/V1.7.5/GayMaker.1.7.5.zip
+1.7.6~https://github.com/KuromeSan/GayMaker/releases/download/v1.7.6/GayMaker.1.7.6.zip
