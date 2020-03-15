@@ -1,0 +1,87 @@
+///////////////////////////////
+// PlayStation Vita specific
+///////////////////////////////
+
+// # = constant
+// * = readonly
+// & = obsolete
+
+psn_get_leaderboard_score_range(pad_index, leaderboard_id, start_index, end_index)
+psn_default_user_name()
+psn_name_for_pad(pad_index)
+psn_unlock_trophy(pad_index, trophy_index)
+psn_get_trophy_unlock_state(pad_index)
+psn_init_np_libs(title_id, np_title_secret, np_passphrase, enable_online)
+psn_exit_np_libs()
+psn_get_leaderboard_score(pad_index, leaderboard_id)
+psn_post_leaderboard_score(pad_index, leaderboard_id, score)
+psn_post_leaderboard_score_comment(pad_index, leaderboard_id, score, comment)
+psn_check_np_availability(pad_index, show_error)
+psn_tick_error_dialog()
+psn_tick()
+psn_np_status(pad_index)
+psn_get_friends_scores(pad_index, leaderboard_id, start_index, end_index)
+psn_name_for_user(user_id)
+psn_default_user()
+psn_user_for_pad(pad_index)
+
+matchmaking_reset_create_params()
+matchmaking_add_create_param(param_index, param_value)
+matchmaking_session_create(num_slots, session_name)
+matchmaking_session_update(session_id)
+matchmaking_session_get_users(session_id)
+matchmaking_session_get_owner(session_id)
+matchmaking_session_set_closed(session_id)
+matchmaking_session_set_open(session_id)
+matchmaking_reset_find_params()
+matchmaking_add_find_param(index, value, operation)
+matchmaking_session_find()
+matchmaking_session_join(session_id)
+matchmaking_session_leave(session_id)
+matchmaking_start(user_id, pad_index)
+matchmaking_stop()
+matchmaking_send_invites(room_id, user_message, max_recipients)
+matchmaking_tick_invites()
+matchmaking_join_invite(invitation_id)
+
+psn_content_restriction_add(country_code, age)
+psn_net_check(default_age_restriction)
+psn_setup_trophies()
+
+psn_init_trophy(pad_index)
+
+PSN_LEADERBOARD_SCORE_MSG#
+PSN_LEADERBOARD_SCORE_RANGE_MSG#
+PSN_LEADERBOARD_FRIENDS_SCORES_MSG#
+PSN_LEADERBOARD_SCORE_POSTED_MSG#
+PSN_TROPHY_INFO_MSG#
+PSN_TROPHY_UNLOCKED_MSG#
+PSN_TROPHY_UNLOCK_STATE#
+
+psn_np_check_plus(real_time, async, pad_index)
+psn_np_commerce_dialog_open(real_time, async, pad_index)
+psn_np_commerce_dialog_tick()
+psn_np_notify_plus_feature(real_time, async, pad_index)
+psn_set_content_restriction(age)
+psn_load_modules()
+
+MATCHMAKING_CONNECTION#
+MATCHMAKING_SESSION#
+
+MATCHMAKING_INVITATION#
+PSN_SERVICE_STATE#
+
+MATCHMAKING_OPERATOR_EQUAL#
+MATCHMAKING_OPERATOR_NOTEQUAL#
+MATCHMAKING_OPERATOR_LESSTHAN#
+MATCHMAKING_OPERATOR_LESSTHANOREQUAL#
+MATCHMAKING_OPERATOR_GREATERTHAN#
+MATCHMAKING_OPERATOR_GREATERTHANOREQUAL#
+
+psn_get_tus_data(pad_index, tus_slot_number)
+psn_set_tus_data(pad_index, tus_slot_number, data_size, data)
+psn_get_tus_variable(pad_index, tus_slot_number)
+psn_set_tus_variable(pad_index, tus_slot_number, data_value)
+psn_delete_tus_data(pad_index, tus_slot_number)
+
+
