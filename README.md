@@ -1,4 +1,4 @@
-#1.7.6
+# 1.7.6       
 Fixed an issue where it was possible to enter invalid characters into Title ID Feild
 Fixed some UI Elements
 Changed \n to \r\n to make gmac output show properly on win10.
