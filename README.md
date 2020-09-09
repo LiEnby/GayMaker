@@ -138,7 +138,7 @@ To Check PSVita Controls use the [GamePad](https://docs.yoyogames.com/source/dad
 Here is what each control maps to:  
 
 gp_face1 = CROSS  
-gp_face2 = CIRCLE
+gp_face2 = CIRCLE             
 gp_face3 = SQUARE  
 gp_face4 = TRIANGLE  
   
