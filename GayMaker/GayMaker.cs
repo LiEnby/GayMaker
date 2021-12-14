@@ -214,7 +214,7 @@ namespace GayMaker
             string args;
             if(HasShaders && !YYC)
             {
-                args = "/c /m=psvita /config=\"Default\" /tgt=2147483648 /obob=True /obpp=False /obru=True /obes=False /i=3 /cvm /tp="+TP.InnerText+" /mv=1 /iv=0 /rv=0 /bv="+ versionBit +" /sh=" + SH.InnerText +" / psvitasdk=\""+Directory.GetCurrentDirectory()+"\\psvitasdk\" /gn=\"" + AppName.Text + "\" /o=\"" + Dst + "\" \"" + Src + "\"";
+                args = "/c /m=psvita /config=\"Default\" /tgt=2147483648 /obob=True /obpp=False /obru=True /obes=False /i=3 /cvm /tp="+TP.InnerText+" /mv=1 /iv=0 /rv=0 /bv="+ versionBit +" /sh=" + SH.InnerText +" /psvitasdk=\""+Directory.GetCurrentDirectory()+"\\psvitasdk\" /gn=\"" + AppName.Text + "\" /o=\"" + Dst + "\" \"" + Src + "\"";
             }
             else 
             {
