@@ -22,7 +22,7 @@ namespace GayMaker
 {
     public partial class GayMaker : Form
     {
-        public String CurrentVersion = "1.7.6";
+        public String CurrentVersion = "1.7.7";
         private string stderr = "";
 
         private bool HasShaders = false;
