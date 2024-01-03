@@ -112,7 +112,7 @@ Run the program. and browse to a GameMaker Studio project file (.gmx).
 you can also change the images, Title. and TitleID and then your game will be    
 "compiled" for PSVITA and saved as a VPK to whereever you choose to save it  
 
-Please show me any games you make with it! (though, please note i wont be too interested unless a girl dies)    
+Please show me any games you make with it!
 
 # Errors
 When the PSVita GameMaker Runner encounters an error. the error dialog is printed to stdout rather than opening a message box.  
